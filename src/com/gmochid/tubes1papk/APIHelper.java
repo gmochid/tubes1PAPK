@@ -4,10 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.json.JSONArray;
+import org.json.JSONObject;
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
 
 import android.os.AsyncTask;
+import android.util.Log;
 
 public class APIHelper {
 	
@@ -23,49 +25,29 @@ public class APIHelper {
 	public static String ACTION_NUMBER = "number";
 	public static String ACTION_ACQUIRE = "acquire";
 	
-	private JSONArray actionResetChest() {
+	public JSONObject actionResetChest() {
+		Log.i("PAPK", "APIHelper.actionResetChest()");
 		List<NameValuePair> params = new ArrayList<NameValuePair>();
 		params.add(new BasicNameValuePair(FIELD_ACTION, ACTION_RESET));
 		params.add(new BasicNameValuePair(FIELD_GROUP_ID, GROUP_ID));
 		return new HttpHelper().connect(URL, "POST", params);
 	}
 	
-	private JSONArray actionGetUnachievedChestCount() {
+	public JSONObject actionGetUnachievedChestCount() {
+		Log.i("PAPK", "APIHelper.actionGetUnachievedChestCount()");
 		List<NameValuePair> params = new ArrayList<NameValuePair>();
 		params.add(new BasicNameValuePair(FIELD_ACTION, ACTION_NUMBER));
 		params.add(new BasicNameValuePair(FIELD_GROUP_ID, GROUP_ID));
 		return new HttpHelper().connect(URL, "GET", params);
 	}
 	
-	private JSONArray actionRetrieveChectLocation(double latitude, double longitude) {
+	public JSONObject actionRetrieveChectLocation(double latitude, double longitude) {
 		// TODO
 		return null;
 	}
 	
-	private JSONArray actionAcquireChest() {
+	public JSONObject actionAcquireChest() {
 		// TODO
 		return null;
-	}
-	
-	public JSONArray doAction(String Action, List<Object> params) {
-		return new JSONArray();
-	}
-	
-	private class InternetConnection extends AsyncTask<Object, Void, JSONArray> {
-		@Override
-		protected JSONArray doInBackground(Object... params) {
-			String action = (String) params[0];
-			if(action.equals(ACTION_RESET)) {
-				return actionResetChest();
-			} else if(action.equals(ACTION_RETRIEVE)) {
-				return actionGetUnachievedChestCount();
-			} else if(action.equals(ACTION_NUMBER)) {
-				List<Double> pos = (List<Double>) params[1]; 
-				return actionRetrieveChectLocation(pos.get(0), pos.get(1));
-			} else if(action.equals(ACTION_ACQUIRE)) {
-				return actionAcquireChest();
-			}
-			return null;
-		}
 	}
 }

@@ -16,27 +16,28 @@ import org.apache.http.client.methods.HttpPost;
 import org.apache.http.client.utils.URLEncodedUtils;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.json.JSONArray;
+import org.json.JSONObject;
 
 import android.os.AsyncTask;
 import android.util.Log;
 
 public class HttpHelper {
-	public JSONArray connect(String url, String method, List<NameValuePair> params) {
+	public JSONObject connect(String url, String method, List<NameValuePair> params) {
 		HttpClient client = new DefaultHttpClient();
 		HttpResponse response;
-		JSONArray ret = new JSONArray();
+		JSONObject ret = new JSONObject();
 		
 		try {
-			Log.i("HttpHelper", "HttpHelper.connect()");
+			Log.i("PAPK", "HttpHelper.connect()");
 			if(method.equals("GET")) {
 				HttpGet httpget = new HttpGet(url + URLEncodedUtils.format(params, "utf-8"));
-				Log.i("HttpHelper", String.format("HttpHelper.connect() - GET [%s]", 
+				Log.i("PAPK", String.format("HttpHelper.connect() - GET [%s]", 
 						url + URLEncodedUtils.format(params, "utf-8")));
 				response = client.execute(httpget);
 			} else {
 				HttpPost httppost = new HttpPost(url);
 				httppost.setEntity(new UrlEncodedFormEntity(params));
-				Log.i("HttpHelper", String.format("HttpHelper.connect() - POST [%s]", 
+				Log.i("PAPK", String.format("HttpHelper.connect() - POST [%s]", 
 						url));
 				response = client.execute(httppost);
 			}
@@ -45,20 +46,20 @@ public class HttpHelper {
 	        
 	        HttpEntity entity = response.getEntity();
 	        
-	        Log.i("HttpHelper", String.format("HttpHelper.connect() - entity [%s]", entity.getContentLength()));
+	        Log.i("PAPK", String.format("HttpHelper.connect() - entity [%s]", entity.getContentLength()));
 
 	        if (entity != null) {
 	            InputStream instream = entity.getContent();
 	            String result = convertStreamToString(instream);
-	            ret = new JSONArray(result);
+	            ret = new JSONObject(result);
 	            instream.close();
 	        }
 	    } catch (Exception e) {
 	    	e.printStackTrace();
-	    	Log.e("HttpHelper", "HttpHelper.connect() ", e);
+	    	Log.e("PAPK", "HttpHelper.connect() ", e);
 	    }
 		
-		Log.i("HttpHelper", "HttpHelper.connect() finish");
+		Log.i("PAPK", "HttpHelper.connect() finish");
 		
 		return ret;
 	}
