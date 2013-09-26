@@ -7,5 +7,6 @@
     <string name="reset_button">RESET</string>
     <string name="location_button">Update Location</string>
     <string name="string_null">NULL</string>
+    <string name="title_activity_radar">RadarActivity</string>
 
 </resources>
