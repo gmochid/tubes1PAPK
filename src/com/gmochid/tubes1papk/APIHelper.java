@@ -19,6 +19,8 @@ public class APIHelper {
 	
 	public static String FIELD_ACTION = "action";
 	public static String FIELD_GROUP_ID = "group_id";
+	public static String FIELD_LONGITUDE = "longitude";
+	public static String FIELD_LATITUDE = "latitude";
 	
 	public static String ACTION_RESET = "reset";
 	public static String ACTION_RETRIEVE = "retrieve";
@@ -41,9 +43,14 @@ public class APIHelper {
 		return new HttpHelper().connect(URL, "GET", params);
 	}
 	
-	public JSONObject actionRetrieveChectLocation(double latitude, double longitude) {
-		// TODO
-		return null;
+	public JSONObject actionRetrieveChectLocation(String latitude, String longitude) {
+		Log.i("PAPK", "APIHelper.actionRetrieveChectLocation()");
+		List<NameValuePair> params = new ArrayList<NameValuePair>();
+		params.add(new BasicNameValuePair(FIELD_ACTION, ACTION_RETRIEVE));
+		params.add(new BasicNameValuePair(FIELD_GROUP_ID, GROUP_ID));
+		params.add(new BasicNameValuePair(FIELD_LATITUDE, latitude));
+		params.add(new BasicNameValuePair(FIELD_LONGITUDE, longitude));
+		return new HttpHelper().connect(URL, "GET", params);
 	}
 	
 	public JSONObject actionAcquireChest() {

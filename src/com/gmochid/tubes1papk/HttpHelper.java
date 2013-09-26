@@ -30,7 +30,7 @@ public class HttpHelper {
 		try {
 			Log.i("PAPK", "HttpHelper.connect()");
 			if(method.equals("GET")) {
-				HttpGet httpget = new HttpGet(url + URLEncodedUtils.format(params, "utf-8"));
+				HttpGet httpget = new HttpGet(url + "?" + URLEncodedUtils.format(params, "utf-8"));
 				Log.i("PAPK", String.format("HttpHelper.connect() - GET [%s]", 
 						url + URLEncodedUtils.format(params, "utf-8")));
 				response = client.execute(httpget);

@@ -6,6 +6,9 @@
     <string name="hello_world">Hello world!</string>
     <string name="reset_button">RESET</string>
     <string name="location_button">Update Location</string>
+    <string name="remaining_button">Get Remaining Chest</string>
+    <string name="nearby_button">Search Nearby Chest</string>
+    <string name="capture_button">Capture</string>
     <string name="string_null">NULL</string>
 
 </resources>

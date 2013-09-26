@@ -29,12 +29,44 @@
         android:text="@string/string_null"
         />
     
+    <EditText
+        android:inputType="text"
+        android:id="@+id/imagenamefield"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/string_null"
+        />
+    
     <Button 
         android:id="@+id/resetButton"
         android:onClick="onResetClick"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/reset_button"
+        />
+    
+    <Button 
+        android:id="@+id/getRemainingButton"
+        android:onClick="onGetRemainingClick"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/remaining_button"
+        />
+    
+    <Button 
+        android:id="@+id/searchButton"
+        android:onClick="onSearchClick"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/nearby_button"
+        />
+    
+    <Button
+        android:id="@+id/captureButton"
+        android:onClick="onCaptureImageClick"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/capture_button" 
         />
     
     <Button 
