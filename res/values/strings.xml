@@ -10,5 +10,6 @@
     <string name="nearby_button">Search Nearby Chest</string>
     <string name="capture_button">Capture</string>
     <string name="string_null">NULL</string>
+    <string name="title_activity_radar">RadarActivity</string>
 
 </resources>
